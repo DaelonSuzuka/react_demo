@@ -4,29 +4,25 @@ FROM python:3.11-slim
 
 WORKDIR /app
 
-RUN apt-get update && apt-get install -y \
-    npm
-#     build-essential \
-#     curl \
-#     software-properties-common \
-#     git \
-#     nmap \
-#     && rm -rf /var/lib/apt/lists/*
+RUN apt-get update && apt-get install -y npm
 
 COPY ./frontend/package.json /app/frontend/package.json
 COPY ./frontend/package-lock.json /app/frontend/package-lock.json
-COPY ./frontend/src /app/frontend/src
-COPY ./frontend/public /app/frontend/public
-COPY ./backend /app/backend
-
 WORKDIR /app/frontend
 RUN npm i
-RUN npm run build
 
+COPY ./backend /app/backend
 WORKDIR /app/backend
 RUN pip3 install -r requirements.txt
 
+COPY ./frontend/src /app/frontend/src
+COPY ./frontend/public /app/frontend/public
+
+WORKDIR /app/frontend
+RUN npm run build
+
+WORKDIR /app/backend
 
 EXPOSE 5000
 
-ENTRYPOINT ["flask", "--debug", "run", "--host=0.0.0.0"]
+ENTRYPOINT ["uvicorn", "main:app", "--host=0.0.0.0", "--port=5000", "--reload"]

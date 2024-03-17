@@ -10,6 +10,7 @@
 		"@testing-library/react": "^13.4.0",
 		"@testing-library/user-event": "^13.5.0",
 		"axios": "^1.6.8",
+		"nanoid": "^5.0.6",
 		"react": "^18.2.0",
 		"react-dom": "^18.2.0",
 		"react-scripts": "5.0.1",
@@ -24,7 +25,12 @@
 		"watch": "npm-watch"
 	},
 	"watch": {
-	  "build": "src/"
+		"build": {
+			"patterns": [
+				"src"
+			],
+			"extensions": "js,jsx,ts,html,scss"
+		}
 	},
 	"proxy": "https://react.daelon.net",
 	"eslintConfig": {
