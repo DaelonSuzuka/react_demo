@@ -106,8 +106,9 @@ function App(props) {
 			<h1>David's Example App</h1>
 			<p>
 				This is a simple to-do app, built with React and served with FastAPI.
+                Tasks are stored on the server and updated using a REST API.
+                API docs are available <a href="https://react.daelon.net/docs">here</a>
 			</p>
-			<p>Tasks are stored on the server </p>
 			<Form addTask={addTask} />
 			<div className="filters btn-group stack-exception">{filterList}</div>
 			<h2 id="list-heading">{headingText}</h2>
