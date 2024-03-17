@@ -1,26 +1,19 @@
-import json
-from flask import Flask, request
+from flask import Flask
 from flask_cors import CORS
+import time
 
-app = Flask(__name__)
+app = Flask(__name__, static_folder="../frontend/build", static_url_path="/")
 CORS(app)
 
 
-# NOTE: This route is needed for the default EB health check route
 @app.route("/")
 def home():
-    return "ok"
+    return app.send_static_file("index.html")
 
 
-@app.route("/api/get_topics")
-def get_topics():
-    return {"topics": ["topic1", "other stuff", "next topic"]}
-
-
-@app.route("/api/submit_question", methods=["POST"])
-def submit_question():
-    question = json.loads(request.data)["question"]
-    return {"answer": f"You Q was {len(question)} chars long"}
+@app.route("/api/time")
+def get_current_time():
+    return {"time": time.time()}
 
 
 if __name__ == "__main__":
