@@ -103,7 +103,7 @@ function App(props) {
 
 	return (
 		<div className="todoapp stack-large">
-			<h1>David's Example App</h1>
+			<h1>David's To-Do App</h1>
 			<p>
 				This is a simple to-do app, built with React and served with FastAPI.
                 Tasks are stored on the server and updated using a REST API.
