@@ -15,6 +15,11 @@ export default function Todo(props) {
 		setEditing(false);
 	}
 
+    function startEditing() {
+        setNewName(props.name);
+        setEditing(true);
+    }
+
 	const editingTemplate = (
 		<form className="stack-small" onSubmit={handleSubmit}>
 			<div className="form-group">
@@ -59,7 +64,7 @@ export default function Todo(props) {
 				</label>
 			</div>
 			<div className="btn-group">
-				<button type="button" className="btn" onClick={() => setEditing(true)}>
+				<button type="button" className="btn" onClick={() => startEditing()}>
 					Edit <span className="visually-hidden">{props.name}</span>
 				</button>
 
