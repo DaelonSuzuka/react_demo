@@ -107,7 +107,10 @@ function App(props) {
 			<p>
 				This is a simple to-do app, built with React and served with FastAPI.
                 Tasks are stored on the server and updated using a REST API.
+                <br/>
                 API docs are available <a href="https://react.daelon.net/docs">here</a>
+                <br/>
+                Project repository is <a href="https://github.com/DaelonSuzuka/react_demo">here</a>
 			</p>
 			<Form addTask={addTask} />
 			<div className="filters btn-group stack-exception">{filterList}</div>
